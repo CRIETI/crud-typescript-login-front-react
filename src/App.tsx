@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ThemeProvider } from "styled-components";
 import { Button } from "./Button/Button";
+import { GlobalStyle } from "./styles/global";
 import { darkTheme } from "./styles/themes/dark";
 import { defaultTheme } from "./styles/themes/default";
 
@@ -18,6 +19,8 @@ export function App() {
         <Button variant="success" />
         <Button variant="danger" />
         <Button />
+        {/*Posso colocar em qualquer lugar, porém dentro do ThemeProvider*/}
+        <GlobalStyle />
       </ThemeProvider>
     </div>
   );

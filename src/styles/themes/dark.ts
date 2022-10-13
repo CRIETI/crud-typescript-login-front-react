@@ -6,4 +6,5 @@ export const darkTheme = {
   danger: "red",
   success: "green",
   fontColor: "#fff",
+  background: "#333",
 };

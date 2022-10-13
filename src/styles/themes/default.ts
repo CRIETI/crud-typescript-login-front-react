@@ -5,5 +5,6 @@ export const defaultTheme = {
   secondary: "purple",
   danger: "red",
   success: "green",
-  fontColor: "#fff",
+  fontColor: "black",
+  background: "#fff",
 };

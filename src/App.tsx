@@ -5,10 +5,10 @@ export function App() {
     <div className="App">
       <h1>Hello world</h1>
       <>
-        <Button color="primary" />
-        <Button color="secondary" />
-        <Button color="success" />
-        <Button color="danger" />
+        <Button variant="primary" />
+        <Button variant="secondary" />
+        <Button variant="success" />
+        <Button variant="danger" />
         <Button />
       </>
     </div>

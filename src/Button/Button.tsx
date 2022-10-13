@@ -1,11 +1,12 @@
-import styles from "./Button.module.css";
+import { ButtonContainer, ButtonVariants } from "./Button.styles";
 
 interface ButtonProps {
-  color?: "primary" | "secondary" | "danger" | "success";
+  variant?: ButtonVariants;
 }
 
-export function Button({ color = "primary" }: ButtonProps) {
-  return (
-    <button className={`${styles.button} ${styles[color]}`}>Enviar</button>
-  );
+//Agora utilizo o Button que criei dentro do meu arquivo ts ao invés do ButtonHTML
+//Passado assim a utilizar um componente de estilização
+//Ao invés de passar um className posso passar a propriedade que eu defini
+export function Button({ variant = "primary" }: ButtonProps) {
+  return <ButtonContainer variant={variant}>Enviar</ButtonContainer>;
 }

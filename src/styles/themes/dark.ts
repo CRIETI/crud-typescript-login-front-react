@@ -7,4 +7,5 @@ export const darkTheme = {
   success: "green",
   fontColor: "#fff",
   background: "#333",
+  borderColor: "#fff",
 };

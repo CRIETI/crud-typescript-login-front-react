@@ -7,4 +7,5 @@ export const defaultTheme = {
   success: "green",
   fontColor: "black",
   background: "#fff",
+  borderColor: "#333",
 };

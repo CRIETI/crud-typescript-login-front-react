@@ -30,8 +30,8 @@ o "css" é só utilizado para formatação do código ficar mais bonita
 */
 export const ButtonContainer = styled.button<ButtonContainerProps>`
   width: 300px;
-  height: 300px;
-  font-size: 50px;
+  height: 50px;
+  font-size: 16px;
 
   /* Da mesma maneira que abaixo consigo pegar as propriedades, consigo pega tbm a propriedade theme*/
   color: ${(props) => props.theme.fontColor};

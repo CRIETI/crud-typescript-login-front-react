@@ -32,9 +32,13 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
   width: 300px;
   height: 300px;
   font-size: 50px;
-  ${(props) => {
+
+  /* Da mesma maneira que abaixo consigo pegar as propriedades, consigo pega tbm a propriedade theme*/
+  color: ${(props) => props.theme.fontColor};
+  background-color: ${(props) => props.theme.primary};
+  /* ${(props) => {
     return css`
       color: ${buttonVariants[props.variant]};
     `;
-  }}
+  }} */
 `;

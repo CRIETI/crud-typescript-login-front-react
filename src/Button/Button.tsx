@@ -2,6 +2,8 @@ import { ButtonContainer, ButtonVariants } from "./Button.styles";
 
 interface ButtonProps {
   variant?: ButtonVariants;
+  disabled?: boolean;
+  type?: "button" | "submit" | "reset" | undefined;
 }
 
 //Agora utilizo o Button que criei dentro do meu arquivo ts ao invés do ButtonHTML

@@ -5,6 +5,8 @@ export type ButtonVariants = "primary" | "secondary" | "danger" | "success";
 // Sempre vamos criar uma tipagem para dizer o que vamos receber nesse componente
 interface ButtonContainerProps {
   variant: ButtonVariants;
+  disabled?: boolean;
+  type?: string;
 }
 
 // Constante definindo cada cor conforme o que vem na propriedade
@@ -36,9 +38,4 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
   /* Da mesma maneira que abaixo consigo pegar as propriedades, consigo pega tbm a propriedade theme*/
   color: ${(props) => props.theme.fontColor};
   background-color: ${(props) => props.theme.primary};
-  /* ${(props) => {
-    return css`
-      color: ${buttonVariants[props.variant]};
-    `;
-  }} */
 `;

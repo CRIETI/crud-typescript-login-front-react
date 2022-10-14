@@ -18,4 +18,9 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 400;
     font-size: 1rem;
   }
+
+  textarea:focus, input:focus {
+      box-shadow: 0 0 0 0;
+      outline: 0;
+  }
 `;

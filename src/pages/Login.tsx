@@ -1,8 +1,8 @@
-import { Button } from "../Button/Button";
-import { Input, LoginContainer } from "./Login.styles";
+import { Input, LoginContainer, InputContainer } from "./Login.styles";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as zod from "zod";
+import { Button } from "../components/Button/Button";
 
 const newLoginValidationSchema = zod.object({
   user: zod.string().min(2, "Informe o seu nome de usuário"),
@@ -25,7 +25,7 @@ export function Login() {
     reset();
   }
 
-  console.log("errors", formState.errors);
+  const errors = formState.errors;
 
   const user = watch("user") && watch("password");
 
@@ -34,15 +34,16 @@ export function Login() {
   return (
     <LoginContainer>
       <form onSubmit={handleSubmit(handleSubmitLogin)}>
-        <div>
+        <InputContainer>
           <label>Usuário</label>
           <Input
             id="user"
             placeholder="Digite aqui seu usuário"
             {...register("user")}
           />
-        </div>
-        <div>
+          {errors?.user && <span>{errors?.user?.message}</span>}
+        </InputContainer>
+        <InputContainer>
           <label>Senha</label>
           <Input
             id="password"
@@ -50,7 +51,7 @@ export function Login() {
             placeholder="Digite aqui sua senha"
             {...register("password")}
           />
-        </div>
+        </InputContainer>
         <Button type="submit" />
       </form>
     </LoginContainer>

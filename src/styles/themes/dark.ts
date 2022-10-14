@@ -8,4 +8,5 @@ export const darkTheme = {
   fontColor: "#fff",
   background: "#333",
   borderColor: "#fff",
+  placeholder: "#DCDCDC",
 };

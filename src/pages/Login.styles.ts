@@ -15,6 +15,16 @@ export const LoginContainer = styled.main`
   }
 `;
 
+export const InputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  span {
+    color: red;
+  }
+`;
+
 const BaseInput = styled.input`
   background: transparent;
   height: 2.5rem;
@@ -29,7 +39,7 @@ const BaseInput = styled.input`
     border-color: ${(props) => props.theme.primary};
   }
   &::placeholder {
-    color: ${(props) => props.theme.borderColor};
+    color: ${(props) => props.theme.placeholder};
   }
 `;
 

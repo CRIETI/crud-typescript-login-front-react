@@ -9,4 +9,7 @@ export const darkTheme = {
   background: "#333",
   borderColor: "#fff",
   placeholder: "#DCDCDC",
+  white: "#fff",
+
+  "gray-100": "#A0ACB3",
 };

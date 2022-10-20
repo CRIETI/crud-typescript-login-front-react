@@ -2,50 +2,35 @@ import styled from "styled-components";
 
 export const LoginContainer = styled.main`
   height: 100vh;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
-  justify-content: center;
+
+  img {
+    height: 100vh;
+  }
+
   form {
+    max-width: 26rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 3.5rem;
+    gap: 32px;
   }
-`;
 
-export const InputContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  h1 {
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 32px;
+  }
 
   span {
     color: red;
   }
 `;
 
-const BaseInput = styled.input`
-  background: transparent;
-  height: 2.5rem;
-  border: 0;
-  border-bottom: 2px solid ${(props) => props.theme.borderColor};
-  font-weight: bold;
-  font-size: 1.125rem;
-  padding: 0 0.5rem;
-  color: ${(props) => props.theme.fontColor};
-  &:focus {
-    box-shadow: none;
-    border-color: ${(props) => props.theme.primary};
-  }
-  &::placeholder {
-    color: ${(props) => props.theme.placeholder};
-  }
-`;
-
-export const Input = styled(BaseInput)`
-  flex: 1;
-  &::-webkit-calendar-picker-indicator {
-    display: none !important;
-  }
+export const InputsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 `;

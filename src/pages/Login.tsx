@@ -1,74 +1,86 @@
-import { Input, LoginContainer, InputContainer } from "./Login.styles";
-import { useForm } from "react-hook-form";
+import { useContext, useState } from "react";
+import { Button } from "../components/Button";
+import { Input } from "../components/Input";
+import { InputsContainer, LoginContainer } from "./Login.styles";
+import { useForm, FormProvider } from "react-hook-form";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as zod from "zod";
-import { Button } from "../components/Button/Button";
+import { AuthContext } from "../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 const newLoginValidationSchema = zod.object({
-  user: zod.string().min(2, "Informe o seu nome de usuário"),
-  password: zod.string().min(2, "Informe a senha"),
+  email: zod
+    .string()
+    .min(1, "Informe o seu email")
+    .email("Informe um e-mail válido"),
+  password: zod.string().min(1, "Informe a sua senha"),
 });
 
 type Login = zod.infer<typeof newLoginValidationSchema>;
 
 export function Login() {
   const navigate = useNavigate();
-  const { register, handleSubmit, watch, formState, reset } = useForm<Login>({
+  const { signIn, user } = useContext(AuthContext);
+  const [errorLogin, setErrorLogin] = useState("");
+
+  const methods = useForm<Login>({
     resolver: zodResolver(newLoginValidationSchema),
     defaultValues: {
-      user: "",
+      email: "",
       password: "",
     },
   });
 
-  //Criar um estado de erros
-  // const [erros, setErrors] = useState()
+  const { handleSubmit, formState } = methods;
 
-  function handleSubmitLogin(data: Login) {
-    /* Agora vou fazer minha chamada axios para a api mandando os dados Vou receber esses dados e conferir se estão certos ou não, e conforme a resposta tomo minha proxima decisão 
-    
-    if(meus dados estão corretos){
+  async function handleSubmitLogin(data: Login) {
+    const login = await signIn(data);
+    if (login) {
       navigate("/");
     } else {
-      setErros( aqui vou colocar a mensagem de erro da API)
-
-      e vou dar  reset() nos campos se achar necessário;
+      setErrorLogin("Login e/ou senha incorreto(s)");
     }
-    */
   }
 
-  const errorUser = formState?.errors?.user;
+  console.log(errorLogin);
 
-  const user = watch("user") && watch("password");
-
-  console.log(user);
+  const { errors } = formState;
 
   return (
     <LoginContainer>
-      <form onSubmit={handleSubmit(handleSubmitLogin)}>
-        <InputContainer>
-          <label>Usuário</label>
-          <Input
-            id="user"
-            placeholder="Digite aqui seu usuário"
-            {...register("user")}
-          />
-          {errorUser && <span>{errorUser?.message}</span>}
-        </InputContainer>
-        <InputContainer>
-          <label>Senha</label>
-          <Input
-            id="password"
-            type="password"
-            placeholder="Digite aqui sua senha"
-            {...register("password")}
-          />
-        </InputContainer>
-        <Button type="submit" />
+      <img
+        src="https://images.unsplash.com/photo-1661956602116-aa6865609028?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
+        alt="Mesa de Trabalho"
+      />
 
-        {/* E aqui posso adicionar os meus erros vindos da API.. Ou posso usar alguma outra biblioteca para apresentar o erro em tela: react-toastify por exemplo*/}
-      </form>
+      <FormProvider {...methods}>
+        <form onSubmit={handleSubmit(handleSubmitLogin)}>
+          <h1>Fazer Login</h1>
+          <InputsContainer>
+            <Input
+              width={176}
+              height={72}
+              label="Email"
+              id="email"
+              placeholder="Digite seu email"
+              errorMessage={errors.email?.message}
+            />
+
+            <Input
+              label="Senha"
+              id="password"
+              placeholder="Digite sua senha"
+              width={176}
+              height={72}
+              errorMessage={errors.password?.message}
+              type="password"
+            />
+          </InputsContainer>
+          <Button label="Login" />
+          <span>{errorLogin}</span>
+        </form>
+      </FormProvider>
     </LoginContainer>
   );
 }

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
-import { Home } from "../pages/Home";
+import { UserList } from "../pages/Users";
 import { Login } from "../pages/Login";
 import { PrivateRoute } from "./PrivateRoute";
 
@@ -10,7 +10,7 @@ export function Router() {
   return (
     <Routes>
       <Route path="/" element={<PrivateRoute />}>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<UserList />} />
       </Route>
       <Route
         path="/login"

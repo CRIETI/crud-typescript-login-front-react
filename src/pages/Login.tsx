@@ -43,8 +43,6 @@ export function Login() {
     }
   }
 
-  console.log(errorLogin);
-
   const { errors } = formState;
 
   return (
@@ -59,8 +57,6 @@ export function Login() {
           <h1>Fazer Login</h1>
           <InputsContainer>
             <Input
-              width={176}
-              height={72}
               label="Email"
               id="email"
               placeholder="Digite seu email"
@@ -71,8 +67,6 @@ export function Login() {
               label="Senha"
               id="password"
               placeholder="Digite sua senha"
-              width={176}
-              height={72}
               errorMessage={errors.password?.message}
               type="password"
             />

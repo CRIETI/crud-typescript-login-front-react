@@ -31,8 +31,9 @@ export function UserList() {
 
   return (
     <div>
-      <Header label="Usuários" />
       <Menu />
+
+      <Header label="Usuários" />
 
       <MainContainer>
         <Button label="Criar Usuário" onClick={showSwal} />

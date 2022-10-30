@@ -60,6 +60,7 @@ export function UserModal({ closeModal, userData }: UserModalProps) {
   const [states, setState] = useState(undefined);
 
   const stateId = watch("stateId");
+  watch("cityId");
 
   useEffect(() => {
     if (userData) {

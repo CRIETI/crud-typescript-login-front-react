@@ -1,11 +1,19 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
+import { Loading } from "../components/Loading";
 
 export const PrivateRoute = ({ ...rest }) => {
-  const { user } = useContext(AuthContext);
+  const { user, getLogged, loading } = useContext(AuthContext);
 
-  if (user) {
+  useEffect(() => {
+    if (user) return;
+
+    getLogged();
+  }, [getLogged, user]);
+  if (loading) {
+    return <Loading />;
+  } else if (user) {
     return <Outlet {...rest} />;
   } else {
     return <Navigate to="login" />;

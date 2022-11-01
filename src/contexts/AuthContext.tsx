@@ -11,6 +11,8 @@ type AuthContextData = {
   isAuthenticated: boolean;
   user: User | undefined;
   logout: () => void;
+  getLogged: () => void;
+  loading: boolean;
 };
 
 type AuthProviderProps = {
@@ -28,11 +30,17 @@ export const AuthContext = createContext({} as AuthContextData);
 
 export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<User>();
+  const [loading, setLoading] = useState(true);
   const isAuthenticated = !!user;
 
   useEffect(() => {
-    const userLogged = getLogged();
-    setUser(userLogged);
+    async function getUser() {
+      const userLogged = await getLogged();
+      setUser(userLogged);
+      setLoading(false);
+    }
+
+    getUser();
   }, []);
 
   const setLogged = (user: User) => {
@@ -88,7 +96,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
   }
 
   return (
-    <AuthContext.Provider value={{ logout, user, signIn, isAuthenticated }}>
+    <AuthContext.Provider
+      value={{ logout, user, signIn, isAuthenticated, getLogged, loading }}
+    >
       {children}
     </AuthContext.Provider>
   );

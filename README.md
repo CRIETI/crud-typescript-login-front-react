@@ -8,7 +8,7 @@
 ## Descrição
 <strong>FEED:</strong>  Está aplicação foi criada dando continuidade nos conceitos sobre react e a implementação do Styled-Compontes na aplicação.
 Este frontend está consumindo a api construída pelos alunos na disciplina de aplicacoes-web-client-server-step-2. Também foram contrúidos forms validados
-através da ferramenta react-hook-form
+através da ferramenta react-hook-form, e contextos. 
 
 
 ##  Tecnologias

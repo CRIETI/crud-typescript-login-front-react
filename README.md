@@ -1,9 +1,5 @@
 <h1 align="center"> Projeto 3 </h1>
 
-![image](https://user-images.githubusercontent.com/40186019/199599220-b1d137da-0082-404f-808f-7d591e8ce712.png)
-![image](https://user-images.githubusercontent.com/40186019/199599285-464d017c-7aa5-43ab-b784-9b34676b147c.png)
-
-
 
 ## Descrição
 <strong>FEED:</strong>  Está aplicação foi criada dando continuidade nos conceitos sobre react e a implementação do Styled-Compontes na aplicação.
